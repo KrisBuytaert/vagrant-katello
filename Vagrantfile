@@ -6,7 +6,7 @@ Vagrant::Config.run do |config|
   config.vm.define :katello do |katello_config|
        katello_config.vm.box = "Centos6"
        katello_config.ssh.max_tries = 100
-       katello_config.vm.host_name = "katello"
+       katello_config.vm.host_name = "fedora15"
        katello_config.vm.forward_port "http", 8080, 8080
        katello_config.vm.forward_port "slave", 8081, 8081
        katello_config.vm.provision :puppet do |katello_puppet|
