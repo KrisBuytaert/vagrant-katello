@@ -5,7 +5,7 @@ node 'katello' {
 
 		'katello':
 			enabled => 1 ,
-                        baseurl => "http://repos.fedorapeople.org/repos/katello/katello/fedora-15/x86_64/",
+                        baseurl => "http://repos.fedorapeople.org/repos/katello/katello/fedora-15/i386/",
 			gpgcheck => 0,
 
 
