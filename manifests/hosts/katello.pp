@@ -54,7 +54,7 @@ node 'katello' {
 	package {
 		"centos-release-cr":
 			ensure => "present";
-		"katello-all":
+		"katello":
 			ensure => "present";
 	}
 
