@@ -38,7 +38,6 @@ node 'katello' {
 				enabled => 1;
 
 
-
 	}
 
 
@@ -49,14 +48,10 @@ node 'katello' {
 	service { "iptables":
 		      ensure => "stopped",
 		      enable => "false";
-		  "httpd":
-		      ensure => "running",
 
 # When you run into AutoReconnect: could not find master/primary
 # It means mongodb ain't running 
 
-		  "mongod":
-		      ensure => "running",
 	}
 
 	package {
@@ -64,14 +59,10 @@ node 'katello' {
 			ensure => "present";
 #		"katello":
 #			ensure => "present";
-		"pulp":
-			ensure => "present";
-		"pulp-admin":
-			ensure => "present";
 	}
 
 
-
+	include pulp 
 }
 
 
