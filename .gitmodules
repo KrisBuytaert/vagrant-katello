@@ -1,0 +1,3 @@
+[submodule "modules/apache"]
+	path = modules/apache
+	url = git+ssh://git@git.dev.inuits.be:2222/puppet-modules/apache.git
