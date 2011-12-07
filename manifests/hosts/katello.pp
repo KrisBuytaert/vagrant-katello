@@ -5,7 +5,7 @@ node 'katello' {
 
 
 		'candlepin':	
-			enabled => 1,
+			enabled => 0,
 			baseurl => 'http://repos.fedorapeople.org/repos/candlepin/candlepin/epel-6Server/$basearch/',	
 			gpgcheck => 0;
 
@@ -47,14 +47,19 @@ node 'katello' {
 
 
 	service { "iptables":
-		ensure => "stopped",
-		       enable => "false";
+		      ensure => "stopped",
+		      enable => "false";
+		  "httpd":
+		      ensure => "running",
+
 	}
 
 	package {
 		"centos-release-cr":
 			ensure => "present";
-		"katello":
+#		"katello":
+#			ensure => "present";
+		"pulp":
 			ensure => "present";
 	}
 
