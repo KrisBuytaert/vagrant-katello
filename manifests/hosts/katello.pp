@@ -52,6 +52,11 @@ node 'katello' {
 		  "httpd":
 		      ensure => "running",
 
+# When you run into AutoReconnect: could not find master/primary
+# It means mongodb ain't running 
+
+		  "mongod":
+		      ensure => "running",
 	}
 
 	package {
@@ -60,6 +65,8 @@ node 'katello' {
 #		"katello":
 #			ensure => "present";
 		"pulp":
+			ensure => "present";
+		"pulp-admin":
 			ensure => "present";
 	}
 

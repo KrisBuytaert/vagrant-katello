@@ -7,10 +7,7 @@ Vagrant::Config.run do |config|
        katello_config.vm.box = "Centos6"
        katello_config.ssh.max_tries = 100
        katello_config.vm.host_name = "katello"
-       katello_config.vm.forward_port "http", 8080, 8080
-       katello_config.vm.forward_port "http", 8443, 8443
-       katello_config.vm.forward_port "http", 443, 8543
-       katello_config.vm.forward_port "slave", 8081, 8081
+       katello_config.vm.forward_port "http", 80, 8080
        katello_config.vm.provision :puppet do |katello_puppet|
        		katello_puppet.pp_path = "/tmp/vagrant-puppet"
        		katello_puppet.manifests_path = "manifests"
