@@ -1,3 +1,7 @@
+This my current work trying to get katello in a Vagrant box.
+
+This is actually my pulp branch so pulp should work , yet not with Sponge integrated yet
+
 
 nss >= 3.12.9 is in EL6++ 
 
