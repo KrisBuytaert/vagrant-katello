@@ -5,9 +5,10 @@ Vagrant::Config.run do |config|
 
   config.vm.define :katello do |katello_config|
        katello_config.vm.box = "Centos6"
+       katello_config.vm.network  :hostonly, "10.42.44.2"
        katello_config.ssh.max_tries = 100
        katello_config.vm.host_name = "katello"
-       katello_config.vm.forward_port "http", 80, 8080
+       katello_config.vm.forward_port  80, 8080
        katello_config.vm.provision :puppet do |katello_puppet|
        		katello_puppet.pp_path = "/tmp/vagrant-puppet"
        		katello_puppet.manifests_path = "manifests"
@@ -15,19 +16,17 @@ Vagrant::Config.run do |config|
        		katello_puppet.manifest_file = "site.pp"
        end
   end
- #config.vm.define :katello_fed do |katello_fed_config|
- #      katello_fed_config.vm.box = "Fedora15"
- #      katello_fed_config.ssh.max_tries = 100
- #      katello_fed_config.vm.host_name = "katello_fed"
- #      katello_fed_config.vm.forward_port "http", 8080, 8080
- #      katello_fed_config.vm.forward_port "slave", 8081, 8081
- #      katello_fed_config.vm.provision :puppet do |katello_fed_puppet|
- #      		katello_fed_puppet.pp_path = "/tmp/vagrant-puppet"
- #      		katello_fed_puppet.manifests_path = "manifests"
- #      		katello_fed_puppet.module_path = "modules"
- #      		katello_fed_puppet.manifest_file = "site.pp"
- #      end
- #
- # end
+  config.vm.define :sponge do |sponge_config|
+       sponge_config.vm.box = "Centos6"
+       sponge_config.ssh.max_tries = 100
+       sponge_config.vm.host_name = "sponge"
+       sponge_config.vm.network  :hostonly, "10.42.44.3"
+       sponge_config.vm.provision :puppet do |sponge_puppet|
+       		sponge_puppet.pp_path = "/tmp/vagrant-puppet"
+       		sponge_puppet.manifests_path = "manifests"
+       		sponge_puppet.module_path = "modules"
+       		sponge_puppet.manifest_file = "site.pp"
+       end
+  end
 
 end
